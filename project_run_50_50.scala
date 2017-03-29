@@ -1,4 +1,5 @@
-val splits = parsedData.randomSplit(Array(0.5,0.5), seed = 11L)
+val seed = System.currentTimeMillis()
+val splits = parsedData.randomSplit(Array(0.5,0.5), seed)
 val training = splits(0)
 val test = splits(1)
 val model = NaiveBayes.train(training, lambda = 1.0, modelType = "multinomial")
