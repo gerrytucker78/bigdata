@@ -159,3 +159,29 @@ calcAccuracy(parsedData,50,.7,.3)
 calcAccuracy(parsedData,50,.8,.2)
 calcAccuracy(parsedData,50,.9,.1)
 
+/*** Sub-Product / Issue / Company **/
+val data = sc.textFile("/got150030/project/sp_i_c_cd.csv")
+
+val parsedData = data.map {line=>
+  val parts = line.split(',')
+  LabeledPoint(parts(3).toDouble, Vectors.dense(parts.dropRight(1).map(_.toDouble)))
+}
+
+Console.println("\n\n********** Sub-Product, Issue, Company **********")
+calcAccuracy(parsedData,50,.7,.3)
+calcAccuracy(parsedData,50,.8,.2)
+calcAccuracy(parsedData,50,.9,.1)
+
+/*** Sub-Product / Company **/
+val data = sc.textFile("/got150030/project/sp_c_cd.csv")
+
+val parsedData = data.map {line=>
+  val parts = line.split(',')
+  LabeledPoint(parts(2).toDouble, Vectors.dense(parts.dropRight(1).map(_.toDouble)))
+}
+
+Console.println("\n\n********** Sub-Product, Company **********")
+calcAccuracy(parsedData,50,.7,.3)
+calcAccuracy(parsedData,50,.8,.2)
+calcAccuracy(parsedData,50,.9,.1)
+
